@@ -1,5 +1,9 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
+const dotenv = require('dotenv');
+
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 const app = express();
 
@@ -7,7 +11,7 @@ const app = express();
 app.use(
   "/usuarios",
   createProxyMiddleware({
-    target: "http://localhost:4000",
+    target: process.env.USERS_SERVICE_URL,
     changeOrigin: true,
   })
 );
@@ -16,14 +20,14 @@ app.use(
 app.use(
   "/vehiculos",
   createProxyMiddleware({
-    target: "http://localhost:8080",
+    target: process.env.VEHICLES_SERVICE_URL,
     changeOrigin: true,
   })
 );
 
 // Definir una ruta simple
 app.get("/", (req, res) => {
-  res.send("¡Hola Mundo desde la API en el puerto 3000!");
+  res.send("¡Hola Mundo desde la API-Gateway en el puerto 3000!");
 });
 
 module.exports = app; // Exportar la instancia de la aplicación
