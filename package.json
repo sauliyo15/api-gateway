@@ -4,9 +4,14 @@
   "description": "Este proyecto implementa un **API Gateway** utilizando **Node.js** y **Express** para enrutar solicitudes hacia dos microservicios: uno para gestionar usuarios y otro para gestionar vehículos. El microservicio de usuarios está construido con **Node.js** y **Express**, mientras que el de vehículos está construido con **Spring Boot**.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
 }
